@@ -1,0 +1,15 @@
+# 이클립스 설정 파일
+.metadata/
+.classpath
+.project
+.settings/
+
+# 빌드 및 컴파일된 파일
+target/
+bin/
+*.class
+
+# OS 및 기타
+.DS_Store
+Thumbs.db
+*.log

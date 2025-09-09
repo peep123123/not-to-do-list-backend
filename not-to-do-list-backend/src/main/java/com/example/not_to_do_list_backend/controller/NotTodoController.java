@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.*;
 import com.example.not_to_do_list_backend.model.NotTodo;
 import com.example.not_to_do_list_backend.persistence.NotTodoRepository;
 
-//이 클래스가 REST API를 다루는 컨트롤러임을 스프링에게 알림
+// @RestController: 이 클래스가 REST API를 다루는 컨트롤러임을 스프링에게 알림
+// @RequestMapping: 이 컨트롤러의 모든 API는 "/nottodo"라는 기본 경로를 가짐
+// @CrossOrigin: CORS 보안 허용
 @RestController
-
-//이 컨트롤러의 모든 API는 "/nottodo"라는 기본 경로를 가짐
 @RequestMapping("/nottodo")
+@CrossOrigin(origins = "http://localhost:5173")
 public class NotTodoController {
 
     // 스프링이 NotTodoRepository 객체를 자동으로 주입(생성)

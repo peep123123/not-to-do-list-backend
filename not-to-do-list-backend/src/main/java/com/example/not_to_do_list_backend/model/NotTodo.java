@@ -1,5 +1,9 @@
 package com.example.not_to_do_list_backend.model;
 
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -21,8 +25,21 @@ public class NotTodo {
 	// 습관 이름
 	private String title;
 	
-	// 할 일의 완료 여부 (true: 완료, false: 미완료)
+	// 안 할 일의 완료 여부 (true: 완료, false: 미완료)
 	private boolean completed;
+	
+	// 안 할 일 등록 날짜 
+	private LocalDate createdAt; 
+	
+	// 달성한 날짜들, 중복 방지를 위한 Set(요소를 추가할 때 중복 확인 함)
+	private Set<LocalDate> completionDates;
+	
+	// NotTodo 객체 생성시 현재 날짜 자동 할당
+	public NotTodo() {
+		this.createdAt = LocalDate.now();
+		this.completionDates = new HashSet<>();
+	}
+	
 	
 	// Getter & Setter 추가
 	public Long getId() {
@@ -48,4 +65,22 @@ public class NotTodo {
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
 	}
+	
+	public LocalDate getCreatedAt() {
+		return createdAt;
+	} 
+	
+	public void setCreatedAt(LocalDate createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Set<LocalDate> getCompletionDates() {
+		return completionDates;
+	}
+
+	public void setCompletionDates(Set<LocalDate> completionDates) {
+		this.completionDates = completionDates;
+	}
+	
+
 }
